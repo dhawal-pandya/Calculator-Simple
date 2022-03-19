@@ -160,7 +160,7 @@ multiply.addEventListener('click', () => {
     string[sc] != '*' &&
     string[sc] != '/'
   ) {
-    string += '-';
+    string += '*';
     upload();
   }
 });
