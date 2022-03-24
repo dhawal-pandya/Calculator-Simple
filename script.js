@@ -28,6 +28,17 @@ function upload() {
   operation.textContent = string;
 }
 
+// checking functions for the operators/////////////////////////
+function check(string) {
+  let sc = string.length - 1;
+  if (
+    string[sc] != '+' &&
+    string[sc] != '-' &&
+    string[sc] != '*' &&
+    string[sc] != '/'
+  )
+    return true;
+}
 // to input array to the postfix eval////////////////////////////////////
 function infixArrProp(string) {
   let arr = [];
@@ -124,54 +135,29 @@ function postFixEval(postfixArray) {
   }
   return returnValue;
 }
-
 // Events//////////////////////////////////////////////////////////
 
 //operators///////////////////////////////////////
 add.addEventListener('click', () => {
-  let sc = string.length - 1;
-  if (
-    string[sc] != '+' &&
-    string[sc] != '-' &&
-    string[sc] != '*' &&
-    string[sc] != '/'
-  ) {
+  if (check(string) && string.length !== 0) {
     string += '+';
     upload();
   }
 });
 sub.addEventListener('click', () => {
-  let sc = string.length - 1;
-  if (
-    string[sc] != '+' &&
-    string[sc] != '-' &&
-    string[sc] != '*' &&
-    string[sc] != '/'
-  ) {
+  if (check(string) && string.length !== 0) {
     string += '-';
     upload();
   }
 });
 multiply.addEventListener('click', () => {
-  let sc = string.length - 1;
-  if (
-    string[sc] != '+' &&
-    string[sc] != '-' &&
-    string[sc] != '*' &&
-    string[sc] != '/'
-  ) {
+  if (check(string) && string.length !== 0) {
     string += '*';
     upload();
   }
 });
 divide.addEventListener('click', () => {
-  let sc = string.length - 1;
-  if (
-    string[sc] != '+' &&
-    string[sc] != '-' &&
-    string[sc] != '*' &&
-    string[sc] != '/'
-  ) {
+  if (check(string) && string.length !== 0) {
     string += '/';
     upload();
   }
@@ -179,18 +165,27 @@ divide.addEventListener('click', () => {
 
 //equal///////////////////////////////////////
 equal.addEventListener('click', () => {
-  // let propinfix = infixArrProp(string);
-  // let postfix = infixToPostfix(propinfix);
-  // let ans = postfixEval(infixToPostfix(infixArrProp(string)));
-  answer.textContent = postFixEval(infixToPostfix(infixArrProp(string)));
-  string = '0';
-  upload();
+  if (check(string) && string.length !== 0) {
+    // let propinfix = infixArrProp(string);
+    // let postfix = infixToPostfix(propinfix);
+    // let ans = postfixEval(infixToPostfix(infixArrProp(string)));
+    answer.textContent = postFixEval(infixToPostfix(infixArrProp(string)));
+    string = '';
+    operation.textContent = '0';
+  }
 });
 
 //numbers///////////////////////////////////
 decimal.addEventListener('click', () => {
-  string += '.';
-  upload();
+  if (
+    check(string) &&
+    string.length !== 0 &&
+    string[string.length - 1] != '.'
+  ) {
+    string += '.';
+    upload();
+  }
+  //could add more stricter code for the decimal
 });
 zero.addEventListener('click', () => {
   string += '0';
@@ -236,6 +231,7 @@ nine.addEventListener('click', () => {
 //clearing//////////////////////////////////////////////
 clear.addEventListener('click', () => {
   string = string.slice(0, -1);
+  console.log(string);
   upload();
 });
 ac.addEventListener('click', () => {
