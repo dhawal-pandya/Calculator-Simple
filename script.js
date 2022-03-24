@@ -169,7 +169,8 @@ equal.addEventListener('click', () => {
     // let propinfix = infixArrProp(string);
     // let postfix = infixToPostfix(propinfix);
     // let ans = postfixEval(infixToPostfix(infixArrProp(string)));
-    answer.textContent = postFixEval(infixToPostfix(infixArrProp(string)));
+    // answer.textContent = postFixEval(infixToPostfix(infixArrProp(string)));
+    answer.textContent = eval(string);
     string = '';
     operation.textContent = '0';
   }
