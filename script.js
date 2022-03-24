@@ -235,7 +235,7 @@ nine.addEventListener('click', () => {
 
 //clearing//////////////////////////////////////////////
 clear.addEventListener('click', () => {
-  string.slice(0, -1);
+  string = string.slice(0, -1);
   upload();
 });
 ac.addEventListener('click', () => {
