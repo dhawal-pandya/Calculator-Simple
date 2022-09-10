@@ -6,6 +6,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  background: black;
 }
 
 .high {
@@ -14,7 +15,7 @@ body {
   flex-direction: column;
   justify-content: center;
   box-sizing: border-box;
-  box-shadow: 0 -5px 10px 0 rgba(0, 0, 0, 0.1), 0 5px 40px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 -5px 10px 0 rgba(255, 255, 255, 0.1), 0 5px 40px 0 rgba(255, 255, 255, 0.3);
   height: 90vh;
   width: 70vw;
   background: rgb(44, 44, 44);
